@@ -141,8 +141,20 @@ void QuickSorting(int arr[],int beg,int end){
 
 // 6 Shell Sort
 // soon..
-void SheelSorting(){
-    
+void ShellSorting(int arr[],int size){
+    int gap = size/2;
+    while (gap>0) {
+        for (int i = gap; i<size; i++) {
+            int j = i;
+            int val = arr[j];
+            while (j>gap-1 && arr[j-gap]>val) {
+                arr[i]=arr[j-gap];
+                j-=gap;
+            }
+            arr[j]=val;
+        }
+        gap/=2;
+    }
 }
 
 int main(int argc, const char * argv[]) {
@@ -166,6 +178,10 @@ int main(int argc, const char * argv[]) {
     
     cout<<"Quick     ";
     QuickSorting(arr,0,4);
+    print(arr, 5);
+    
+    cout<<"Shell     ";
+    ShellSorting(arr,5);
     print(arr, 5);
     
     return 0;

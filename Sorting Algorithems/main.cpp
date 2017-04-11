@@ -110,12 +110,40 @@ void MergeSorting(int arr[],int beg,int end){
 
 
 
-// 5 Quick Sort
-
-void QuickSorting(int arr[],int beg,int end){
+// 5 Quick Sort - part 1
+int Partition(int arr[],int beg,int end)
+{
+    int p = beg,
+    pivot = arr[end];
+    for (int i = beg; i<end; i++) {
+        if (arr[i] <= pivot) {
+            int temp = arr[p];
+            arr[p] = arr[i];
+            arr[i] = temp;
+            
+            p++;
+        }
+    }
+    int temp = arr[end];
+    arr[end] = arr[p];
+    arr[p] = temp;
     
+    return p;
+}
+// 5 Qucik Sort - part 2
+void QuickSorting(int arr[],int beg,int end){
+    if (beg<end) {
+        int pivot = Partition(arr,beg,end);
+        QuickSorting(arr, beg, pivot-1);
+        QuickSorting(arr, pivot+1, end);
+    }
 }
 
+// 6 Shell Sort
+// soon..
+void SheelSorting(){
+    
+}
 
 int main(int argc, const char * argv[]) {
     
@@ -136,6 +164,9 @@ int main(int argc, const char * argv[]) {
     MergeSorting(arr,0,4);
     print(arr, 5);
     
+    cout<<"Quick     ";
+    QuickSorting(arr,0,4);
+    print(arr, 5);
     
     return 0;
 }

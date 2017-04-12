@@ -140,7 +140,6 @@ void QuickSorting(int arr[],int beg,int end){
 }
 
 // 6 Shell Sort
-// soon..
 void ShellSorting(int arr[],int size){
     int gap = size/2;
     while (gap>0) {
